@@ -39,7 +39,7 @@
 	  thefuck
 
 	  #nvim nightly
-	  # inputs.neovim-nightly-overlay.packages.${pkgs.system}.default
+	  #inputs.neovim-nightly-overlay.packages.${pkgs.system}.default
 	  #
 	  #
 	  # #langauages
@@ -47,11 +47,11 @@
 	  #
 	  # #nvim lsps
 	  #
-	  # lua-language-server
+	#lua-language-server
 	  #
 	  #
-	  # nil #nix language server
-	  #    nixfmt-classic
+	#nil #nix language server
+	#nixfmt-classic
 
 
 

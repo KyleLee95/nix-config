@@ -23,7 +23,7 @@
     inherit (self) outputs;
 	overlays =[
 	# add overlays here
-    # inputs.neovim-nightly-overlay.packages.${pkgs.system}.default
+     #inputs.neovim-nightly-overlay.packages.${pkgs.system}.default
   ];
   in {
     # NixOS configuration entrypoint
@@ -46,7 +46,7 @@
         # > Our main home-manager configuration file <
         modules = [
 		./home-manager/home.nix
-#		{ nixpkgs.overlays = overlays; };
+		({ nixpkgs.overlays =[ overlays ];})
 		];
       };
     };

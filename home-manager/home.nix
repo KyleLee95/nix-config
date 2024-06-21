@@ -19,6 +19,7 @@
   nixpkgs = {
     # You can add overlays here
     overlays = [
+      inputs.neovim-nightly-overlay.overlays.default
       # If you want to use overlays exported from other flakes:
       # Or define it inline, for example:
       # (final: prev: {
@@ -43,7 +44,9 @@
 
   # Add stuff for your user as you see fit:
   # programs.neovim.enable = true;
-  # home.packages = with pkgs; [ neovim-nightly];
+  #home.packages = with pkgs; [
+  #	inputs.neovim-nightly
+  #];
 
   # Enable home-manager and git
   programs = {
@@ -51,24 +54,9 @@
 		enable = true;
 	};
 
-	neovim = {
-		package = pkgs.unstable.neovim-unwrapped;
-		defaultEditor = true;
-		enable = true;
-		extraPackages= with pkgs;[
-			alejandra
-			curl
-			ripgrep
-			nixd
-			nil
-			stylua
-			wget
-			lua-language-server
-			rust-analyzer
-			shellcheck
-			shellfmt
-		];
-	}
+#	neovim={
+#		enable=true;
+#	};
 
 
 

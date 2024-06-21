@@ -20,8 +20,6 @@
     # You can add overlays here
     overlays = [
       # If you want to use overlays exported from other flakes:
-      # neovim-nightly-overlay.overlays.default
-
       # Or define it inline, for example:
       # (final: prev: {
       #   hi = final.hello.overrideAttrs (oldAttrs: {
@@ -38,7 +36,6 @@
     };
   };
 
-  # TODO: Set your username
   home = {
     username = "kyle";
     homeDirectory = "/home/kyle";
@@ -46,19 +43,28 @@
 
   # Add stuff for your user as you see fit:
   # programs.neovim.enable = true;
-  # home.packages = with pkgs; [ steam ];
+  # home.packages = with pkgs; [ neovim-nightly];
 
   # Enable home-manager and git
   programs = {
+    home-manager={
+		enable = true;
+	};
     git = {
-	enable = true;
-	userEmail = "kyle@kylelee.com";
-	userName = "Kyle Lee";
+		enable = true;
+		userEmail = "kyle@kylelee.com";
+		userName = "Kyle Lee";
 
-	}
-    home-manager.enable = true;
+	};
+    direnv = {
+      enable = true;
+      enableBashIntegration = true; # see note on other shells below
+    };
+    bash ={
+	  enable = true;
+	}; # see note on other shells below
   };
-  programs.home-manager.enable = true;
+
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";

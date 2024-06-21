@@ -29,16 +29,16 @@
 	  gnomeExtensions.pop-shell
 	  gnome3.gnome-tweaks
 	  xclip
-
+	  inputs.neovim-nightly-overlay.packages.${pkgs.system}.default
+	  inputs.helix.packages."${pkgs.system}".helix
 	];
-
   };
 
   nixpkgs = {
     # You can add overlays here
     overlays = [
       # If you want to use overlays exported from other flakes:
-      neovim-nightly-overlay.overlays.default
+      #neovim-nightly-overlay.overlays.default
 
       # Or define it inline, for example:
       # (final: prev: {
@@ -91,18 +91,18 @@
   time.timeZone = "America/New_York";
 
   # Select internationalization props
-  118n.defaultLocale = "en_US.UTF-8";
+  i18n.defaultLocale = "en_US.UTF-8";
 
-  118n.extraLocalSettings = {
-  LC_ADDRESS = "en_US.UTF-8";
-  LC_IDENTIFICATION = "en_US.UTF-8";
-  LC_MEASUREMENT = "le en_US.UTF-8";
-  LC_MONETARY = "en_US.UTF-8";
-  LC_NAME = "en_US.UTF-8";
-  LC_NUMERIC = "en_US.UTF-8";
-  LC_PAPER = "en_US.UTF-8";
-  LC_TELEPHONE= "en_US.UTF-8";
-  LC_TIME = "en_US.UTF-8";
+  i18n.extraLocaleSettings = {
+	  LC_ADDRESS = "en_US.UTF-8";
+	  LC_IDENTIFICATION = "en_US.UTF-8";
+	  LC_MEASUREMENT = "en_US.UTF-8";
+	  LC_MONETARY = "en_US.UTF-8";
+	  LC_NAME = "en_US.UTF-8";
+	  LC_NUMERIC = "en_US.UTF-8";
+	  LC_PAPER = "en_US.UTF-8";
+	  LC_TELEPHONE= "en_US.UTF-8";
+	  LC_TIME = "en_US.UTF-8";
   };
 
   # Enable X11
@@ -110,8 +110,8 @@
 
   # Enable GNOME DE
   services.xserver.displayManager.gdm.enable = true;
-  services.xserver.displayManager.gnome.enable = true;
-  services.xserver.displayManager.gnome.sessionPath = [pkgs.gnomeExtensions.pop-shell];
+  services.xserver.desktopManager.gnome.enable = true;
+  services.xserver.desktopManager.gnome.sessionPath = [pkgs.gnomeExtensions.pop-shell];
 
 
   # System76 hardware config
@@ -123,29 +123,24 @@
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
-  services.pipeware = {
-  enable =true;
-  alsa.enable = true;
-  alsa.support32Bit =true;
-  pulse.enable = true;
+  services.pipewire = {
+	  enable =true;
+	  alsa.enable = true;
+	  alsa.support32Bit =true;
+	  pulse.enable = true;
+  };
   # If you want ot use JACK apps
   # jack.enable = true;
 
   # Enable touchpad support (left here for posterity but gnome already handles this)
   # services.xserver.libinput.enable = true;
-  }
   # TODO: Configure your system-wide user settings (groups, etc), add more users as needed.
-  users.users = {
-      kyle  = {
-      isNormalUser = true;
-      openssh.authorizedKeys.keys = [
-        # TODO: Add your SSH public key(s) here, if you plan on using SSH to connect
-      ];
-      # TODO: Be sure to add any other groups you need (such as networkmanager, audio, docker, etc)
-      extraGroups = ["networkmanager","wheel"];
-      packages = with pkgs; [
-	];
-    };
+  users.users.kyle = {
+				  isNormalUser = true;
+				  extraGroups = ["networkmanager" "wheel"];
+				  packages = with pkgs; [];
+				  # openssh.authorizedKeys.keys = [# TODO: Add your SSH public key(s) here, if you plan on using SSH to connect];
+				  # TODO: Be sure to add any other groups you need (such as networkmanager, audio, docker, etc)
   };
 
   # This setups a SSH server. Very important if you're setting up a headless system.
@@ -158,8 +153,9 @@
       #Opinionated: use keys only.
       # Remove if you want to SSH using passwords
  #     PasswordAuthentication = false;
-  #  };
+	};
+  };
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-  system.stateVersion = "23.05"#
-};
+  system.stateVersion = "23.05";#
+}
 

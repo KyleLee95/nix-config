@@ -50,16 +50,41 @@
     home-manager={
 		enable = true;
 	};
+
+	neovim = {
+		package = pkgs.unstable.neovim-unwrapped;
+		defaultEditor = true;
+		enable = true;
+		extraPackages= with pkgs;[
+			alejandra
+			curl
+			ripgrep
+			nixd
+			nil
+			stylua
+			wget
+			lua-language-server
+			rust-analyzer
+			shellcheck
+			shellfmt
+		];
+	}
+
+
+
     git = {
 		enable = true;
 		userEmail = "kyle@kylelee.com";
 		userName = "Kyle Lee";
 
 	};
+
     direnv = {
       enable = true;
       enableBashIntegration = true; # see note on other shells below
     };
+
+
     bash ={
 	  enable = true;
 	}; # see note on other shells below

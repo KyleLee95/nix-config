@@ -39,19 +39,19 @@
 	  thefuck
 
 	  #nvim nightly
-	  inputs.neovim-nightly-overlay.packages.${pkgs.system}.default
-
-
-	  #langauages
-	  typescript
-
-	  #nvim lsps
-
-	  lua-language-server
-
-
-	  nil #nix language server
-      nixfmt-classic
+	  # inputs.neovim-nightly-overlay.packages.${pkgs.system}.default
+	  #
+	  #
+	  # #langauages
+	  # typescript
+	  #
+	  # #nvim lsps
+	  #
+	  # lua-language-server
+	  #
+	  #
+	  # nil #nix language server
+	  #    nixfmt-classic
 
 
 

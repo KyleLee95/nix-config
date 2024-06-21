@@ -26,10 +26,37 @@
 	  vim
 	  wget
 	  git
+	  fzf
+	  rm-improved
+
+
 	  gnomeExtensions.pop-shell
 	  gnome3.gnome-tweaks
 	  xclip
+
+	  nerdfonts
+	  lsd
+	  thefuck
+
+	  #nvim nightly
 	  inputs.neovim-nightly-overlay.packages.${pkgs.system}.default
+
+
+	  #langauages
+	  typescript
+
+	  #nvim lsps
+
+	  lua-language-server
+
+
+	  nil #nix language server
+      nixfmt-classic
+
+
+
+
+
 	  inputs.helix.packages."${pkgs.system}".helix
 	];
   };

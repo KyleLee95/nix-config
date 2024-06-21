@@ -28,6 +28,7 @@
 	  git
 	  gnomeExtensions.pop-shell
 	  gnome3.gnome-tweaks
+	  xclip
 
 	];
 

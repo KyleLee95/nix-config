@@ -49,8 +49,16 @@
   # home.packages = with pkgs; [ steam ];
 
   # Enable home-manager and git
+  prorgrams = {
+    git = {
+	enable = true;
+	userEmail = "kyle@kylelee.com";
+	userName = "Kyle Lee";
+
+	}
+    home-manager.enable = true;
+  };
   programs.home-manager.enable = true;
-  programs.git.enable = true;
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";

@@ -49,7 +49,7 @@
   # home.packages = with pkgs; [ steam ];
 
   # Enable home-manager and git
-  prorgrams = {
+  programs = {
     git = {
 	enable = true;
 	userEmail = "kyle@kylelee.com";

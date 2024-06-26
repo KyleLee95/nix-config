@@ -21,6 +21,7 @@
     ./hardware-configuration.nix
   ];
 
+
   environment = {
 	systemPackages = with pkgs; [
 	  vim
@@ -38,26 +39,17 @@
 	  lsd
 	  thefuck
 
-	  #nvim nightly
-	  #inputs.neovim-nightly-overlay.packages.${pkgs.system}.default
-	  #
-	  #
-	  # #langauages
-	  # typescript
-	  #
-	  # #nvim lsps
-	  #
-	#lua-language-server
-	  #
-	  #
-	#nil #nix language server
-	#nixfmt-classic
 
+	  #terminal editors
+	  inputs.neovim-nightly-overlay.packages.${pkgs.system}.default
+      inputs.helix.packages."${pkgs.system}".helix
 
+	  # Browers
+      firefox
+	  chromium
 
+	  wezterm
 
-
-	  inputs.helix.packages."${pkgs.system}".helix
 	];
   };
 
